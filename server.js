@@ -99,5 +99,5 @@ app.put("/workexperience/:id", (req, res) => {
 });
 
 // Starta servern
-const PORT = 5000;
-app.listen(PORT, () => console.log("Server på port ${PORT"));
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server på port 3000`));
