@@ -67,6 +67,37 @@ app.delete("/workexperience/:id", (req, res) => {
 }
 });
 
+// uppdatera
+app.put("/workexperience/:id", (req, res) => {
+    const { id } = req.params;
+    const { companyname, jobtitle, location, startdate, enddate, description } = req.body;
+
+    // validering
+    if (!companyname || !jobtitle || !location || !startdate || !description) {
+        return res.status(400).json({
+            error: "Validering misslyckades: Alla fält (utom eventuellt slutdatum) måste fyllas i!"
+        });
+    }
+
+    try {
+        const statement = db.prepare(`
+            UPDATE workexperience
+            SET companyname = ?, jobtitle = ?, location = ?, startdate = ?, enddate = ?, description = ?
+            WHERE id = ?
+            `);
+
+            const result = statement.run(companyname, jobtitle, location, startdate, enddate, description, id);
+
+            if (result.changes > 0) {
+                res.json({ message: "Arbetserfarenheten har uppdaterats!" });
+            } else {
+                res.status(404).json({ error: "Hittade ingen post med det ID:t" });
+            }
+    } catch (err) {
+        res.status(500).json({ error: "Kunde inte uppdatera databasen: " + err.message })
+    }
+});
+
 // Starta servern
 const PORT = 5000;
 app.listen(PORT, () => console.log("Server på port ${PORT"));
