@@ -1,8 +1,8 @@
 # CV API - Backend
 
  Detta är backend-delen av mitt CV-projekt för laboration 2 i kursen Backend-baserad webbutveckling. Den är byggd för att hantera arbetserfarenheter via ett REST-API.
----
 
+---
 # 🔗 **[Länk](https://lab2-backend-v8ix.onrender.com/workexperience)**
 
 ## 🛠 Teknik
