@@ -16,9 +16,4 @@ db.exec(`
 
     console.log("Databasen är installerad och redo!");
 
-    const insert = db.prepare('INSERT INTO workexperience (companyname, jobtitle, location, startdate, enddate, description) VALUES (?, ?, ?, ?, ?, ?)');
-    insert.run('Mittuniversitetet', 'Labbhandledare', 'Sundsvall', '2019-01-01', '2019-12-31', 'Handledning av studenter');
-    insert.run('IKEA', 'Lagerpersonal', 'Helsingborg', '2023-01-01', '2024-01-01', 'Arbetade i lagret på IKEA');
-
-    console.log("Testdata har lagts till i workexperience");
     db.close();
